@@ -1,64 +1,64 @@
-#include<stdio.h>
-void main()
-{
-    int a,b=100000,cr,am,de,pin=2345,br,cp,ot;
-     printf("\n Enter the Pin:");
-     scanf("%d",&pin);
-    if(pin==2345)
-        {
-           printf("The Pin is Valid");
-           printf("To Check Balance--> Press 1");
-           printf("\nTo Credit Cash--> Press 2");
-           printf("\nTo widthdrawal Cash-->Press 3");
-           printf("\nTo Change Pin-->Press 4");
-           printf("\n Exit-->Press 5");
-           printf("\nEnter the Number:");
-           scanf("%d",&a);
-        
-        if(a==1)
-        {
-            printf("The balance is:%d",b);
+#include <stdio.h>
+
+int main() {
+    int a, b = 100000, cr, am, de, pin = 2345, br, cp, ot, enteredPin;
+
+    printf("\nEnter the Pin: ");
+    scanf("%d", &enteredPin);
+
+    if (enteredPin == pin) {
+        printf("The Pin is Valid\n");
+        printf("To Check Balance --> Press 1\n");
+        printf("To Credit Cash --> Press 2\n");
+        printf("To Withdraw Cash --> Press 3\n");
+        printf("To Change Pin --> Press 4\n");
+        printf("To Exit --> Press 5\n");
+        printf("Enter the Number: ");
+        scanf("%d", &a);
+
+        switch (a) {
+            case 1:
+                printf("The balance is: %d\n", b);
+                break;
+
+            case 2:
+                printf("Enter the Amount to Credit: ");
+                scanf("%d", &am);
+                cr = b + am;
+                printf("The amount is credited. New balance: %d\n", cr);
+                break;
+
+            case 3:
+                printf("Enter the amount to Withdraw: ");
+                scanf("%d", &de);
+                if (de > b) {
+                    printf("You don't have sufficient balance.\n");
+                } else {
+                    br = b - de;
+                    printf("The amount has been withdrawn. New balance: %d\n", br);
+                }
+                break;
+
+            case 4:
+                printf("Enter the OTP: ");
+                scanf("%d", &ot);
+                // Assume OTP is always valid for this simulation
+                printf("Enter the new Pin to Change: ");
+                scanf("%d", &cp);
+                pin = cp; // Change the PIN
+                printf("The pin has been changed successfully.\n");
+                break;
+
+            case 5:
+                printf("The transaction is cancelled.\nThank you for using the ATM. Have a nice day!\n");
+                break;
+
+            default:
+                printf("Invalid choice.\n");
         }
-        else if(a==2)
-        {
-           printf("Enter the Amount:");
-            scanf("%d",&am);
-            cr=b+am;
-            printf("The amount is Credited:%d",cr);
-        }
-        else if(a==3)
-        {  
-            printf("enter the amount:");
-            scanf("%d",&de);
-            br=b-de;
-            printf("The amount is withdrawal:%d",br);
-        }
-        else if(am>b)
-        {
-            printf("You don't have sufficient Balance");
-        }
-        else if(a==4){
-            printf("Enter the OTP:");
-            scanf("%d",&ot);
-            printf("Enter the Pin to Change:");
-            scanf("%d",&cp);
-            printf("The pin is changed");
-        }
-        else if(a==5)
-        {
-            printf("The transaction is Cancelled\nThank You for Using ATM\n Have a Nice Day");
-        }
-        else{
-            printf("Invalid choice");
-        }
-      } 
-   else
-        {
-            printf("The pin is incorrect");
-        
-        }
-        
-        
-    
+    } else {
+        printf("The pin is incorrect.\n");
+    }
+
+    return 0;
 }
-    
